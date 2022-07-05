@@ -2,17 +2,25 @@ package singleton
 
 import "sync"
 
+// lazySingletonStruct 懒汉式单例
+type lazySingletonStruct struct{}
+
 var (
-	lazySingleton *Singleton
+	lazySingleton *lazySingletonStruct
 	once          = &sync.Once{}
 )
 
-// GetLazyInstance 懒汉式
-func GetLazyInstance() *Singleton {
+// GetLazySingletonInstance 获取单例实例
+func GetLazySingletonInstance() *lazySingletonStruct {
 	if lazySingleton == nil {
 		once.Do(func() {
-			lazySingleton = &Singleton{}
+			lazySingleton = &lazySingletonStruct{}
 		})
 	}
 	return lazySingleton
+}
+
+// GetLazyInstance 获取普通实例
+func GetLazyInstance() *lazySingletonStruct {
+	return &lazySingletonStruct{}
 }

@@ -6,14 +6,14 @@ import (
 )
 
 func TestGetLazyInstance(t *testing.T) {
-	singleton1 := singleton.GetLazyInstance()
-	singleton2 := singleton.GetLazyInstance()
+	singleton1 := singleton.GetLazySingletonInstance()
+	singleton2 := singleton.GetLazySingletonInstance()
 	if singleton1 != singleton2 {
 		t.Error("expected: singleton1 == singleton2, but !=")
 	}
 
-	singleton3 := &singleton.Singleton{}
-	singleton4 := &singleton.Singleton{}
+	singleton3 := singleton.GetLazyInstance()
+	singleton4 := singleton.GetLazyInstance()
 	if singleton3 == singleton4 {
 		t.Error("expected: singleton3 != singleton4, but ==")
 	}
@@ -22,7 +22,7 @@ func TestGetLazyInstance(t *testing.T) {
 func BenchmarkGetLazyInstanceParallel(b *testing.B) {
 	b.RunParallel(func(pb *testing.PB) {
 		for pb.Next() {
-			if singleton.GetLazyInstance() != singleton.GetLazyInstance() {
+			if singleton.GetLazySingletonInstance() != singleton.GetLazySingletonInstance() {
 				b.Error("test fail")
 			}
 		}
