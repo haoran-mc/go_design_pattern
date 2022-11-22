@@ -2,8 +2,9 @@ package builder
 
 import (
 	"fmt"
-	"golang.org/x/net/context"
 	"time"
+
+	"golang.org/x/net/context"
 )
 
 type Cluster struct {
@@ -18,7 +19,7 @@ type options struct {
 }
 
 // Option 通过一个选项实现为一个函数指针来达到一个目的：设置选项中的数据的状态
-// Golang函数指针的用法
+// Golang 函数指针的用法
 type Option func(c *options)
 
 // LogError 设置某个参数的一个具体实现，用到了闭包的用法。
