@@ -27,6 +27,16 @@ func (Y yamlConfigParser) Parse(data []byte) {
 	fmt.Println("yaml parsing...", string(data))
 }
 
+// Load 加载配置文件
+// 这个就是通过工厂模式优化的函数
+// 放入一个后缀，就可以得到由工厂生成的解析器
+func Load(configFilePath string) {
+	ext := GetFileExtension(configFilePath)
+	parser := NewConfigParser(ext) // 工厂生成解析器
+	configText := []byte("")
+	parser.Parse(configText)
+}
+
 // NewConfigParser 是生产 ConfigParser 的工厂
 // 参数是配置文件，如果文件后缀是 json，那么就会生产出一个解析 json
 // 的解释器，如果文件后缀是 yaml，那么就会生产一个解析 yaml 的解析器
@@ -38,14 +48,6 @@ func NewConfigParser(fileExt string) ConfigParser {
 		return yamlConfigParser{}
 	}
 	return nil
-}
-
-// Load 加载配置文件
-func Load(configFilePath string) {
-	ext := GetFileExtension(configFilePath)
-	parser := NewConfigParser(ext) // 工厂生成解析器
-	configText := []byte("")
-	parser.Parse(configText)
 }
 
 // GetFileExtension 通过文件名获取扩展名

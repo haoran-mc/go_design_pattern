@@ -6,19 +6,19 @@ import (
 	"strings"
 )
 
-// ConfigParser 配置文件解析器接口
+// 配置文件解析器接口
 type ConfigParser interface {
 	Parse(data []byte)
 }
 
-// jsonConfigParser json 格式的配置文件解析器
+// json 格式的配置文件解析器
 type jsonConfigParser struct{}
 
 func (J jsonConfigParser) Parse(data []byte) {
 	fmt.Println("json parsing...", string(data))
 }
 
-// yamlConfigParser yaml 格式的配置文件解析器
+// yaml 格式的配置文件解析器
 type yamlConfigParser struct{}
 
 func (Y yamlConfigParser) Parse(data []byte) {
@@ -39,11 +39,11 @@ func Load(configFilePath string) {
 		parser = yamlConfigParser{}
 	}
 
-	configText := "name: mc" // 配置文件内容
+	configText := "name: haoran" // 配置文件内容
 	parser.Parse([]byte(configText))
 }
 
-// GetFileExtension 通过文件名获取扩展名
+// 通过文件名获取扩展名
 func GetFileExtension(filePath string) (string, error) {
 	dotPos := strings.LastIndexByte(filePath, '.')
 	fileSuffix := filePath[dotPos+1:]

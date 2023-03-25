@@ -10,7 +10,7 @@ type ResourcePoolConfigOption struct {
 
 type ResourcePoolConfigOptFunc func(option *ResourcePoolConfigOption)
 
-// NewResourcePoolConfig 传入一个函数，使用函数进行初始化
+// 传入函数切片，使用函数进行初始化
 func NewResourcePoolConfig(name string, opts ...ResourcePoolConfigOptFunc) (*ResourcePoolConfig, error) {
 	if name == "" {
 		return nil, fmt.Errorf("name can not be empty")
@@ -23,7 +23,7 @@ func NewResourcePoolConfig(name string, opts ...ResourcePoolConfigOptFunc) (*Res
 	}
 
 	for _, opt := range opts {
-		opt(option)
+		opt(option) // opt 函数处理所有的可配置项 option
 	}
 
 	if option.maxTotal < 0 || option.maxIdle < 0 || option.minIdle < 0 {

@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+
 	di "github.com/haoran-mc/go_design_pattern/02_factory/024_di"
 )
 

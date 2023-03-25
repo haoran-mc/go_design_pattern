@@ -5,69 +5,31 @@ import (
 	"strings"
 )
 
-// RuleConfigParser 规则解析器接口
-type RuleConfigParser interface {
-	ParseRule(data []byte)
+// Load 加载配置文件
+func Load(configFilePath string) {
+	ext := GetFileExtension(configFilePath)
+	parserFactory := NewConfigParserFactory(ext) // 获取解析器工厂
+	parser := parserFactory.CreateCarParser()    // 这里我们指定要解析汽车
+	configText := []byte("")
+	parser.ParseCar(configText)
 }
-
-// jsonRuleConfigParser
-type jsonRuleConfigParser struct{}
-
-func (j jsonRuleConfigParser) ParseRule(data []byte) {
-	fmt.Println("json rule parsing...", string(data))
-}
-
-// --------------------------
-
-// SystemConfigParser 系统解析器接口
-type SystemConfigParser interface {
-	ParseSystem(data []byte)
-}
-
-// jsonSystemConfigParser
-type jsonSystemConfigParser struct{}
-
-func (j jsonSystemConfigParser) ParseSystem(data []byte) {
-	fmt.Println("json system parsing...", string(data))
-}
-
-// --------------------------
-
-// ConfigParserFactory 工厂方法接口
-type ConfigParserFactory interface {
-	CreateRuleParser() RuleConfigParser
-	CreateSystemParser() SystemConfigParser
-}
-
-// --------------------------
-
-type jsonConfigParserFactory struct{}
-
-func (j jsonConfigParserFactory) CreateRuleParser() RuleConfigParser {
-	return jsonRuleConfigParser{}
-}
-
-func (j jsonConfigParserFactory) CreateSystemParser() SystemConfigParser {
-	return jsonSystemConfigParser{}
-}
-
-// -----------------------------------------------------
 
 func NewConfigParserFactory(fileExt string) ConfigParserFactory {
 	switch fileExt {
 	case "json":
-		return jsonConfigParserFactory{}
+		return jsonParserFactory{}
+		/*
+			case "yaml":
+				return yamlParserFactory{}
+			case "toml":
+				return tomlParserFactory{}
+			case "ini":
+				return iniParserFactory{}
+			case "conf":
+				return confParserFactory{}
+		*/
 	}
 	return nil
-}
-
-// Load 加载配置文件
-func Load(configFilePath string) {
-	ext := GetFileExtension(configFilePath)
-	parserFactory := NewConfigParserFactory(ext)
-	parser := parserFactory.CreateRuleParser()
-	configText := []byte("")
-	parser.ParseRule(configText)
 }
 
 // GetFileExtension 通过文件名获取扩展名
@@ -81,3 +43,82 @@ func GetFileExtension(filePath string) string {
 	}
 	return ""
 }
+
+// --------------------------
+
+// ConfigParserFactory 工厂方法接口
+type ConfigParserFactory interface {
+	CreateCarParser() CarParser
+	CreateComputerParser() ComputerParser
+	CreateLampParser() LampParser
+}
+
+type jsonParserFactory struct{}
+
+func (j jsonParserFactory) CreateCarParser() CarParser {
+	return jsonCarParser{}
+}
+
+func (j jsonParserFactory) CreateComputerParser() ComputerParser {
+	return jsonComputerParser{}
+}
+
+func (j jsonParserFactory) CreateLampParser() LampParser {
+	return jsonLampParser{}
+}
+
+// type yamlParserFactory struct{}
+// func (y yamlParserFactory) CreateCarParser()
+// func (y yamlParserFactory) CreateComputerParser()
+// func (y yamlParserFactory) CreateLampParser()
+
+type tomlParserFactory struct{}
+type iniParserFactory struct{}
+type confParserFactory struct{}
+
+// -----------------------------------------------------
+
+// 汽车解析器
+type CarParser interface {
+	ParseCar(data []byte)
+}
+
+type jsonCarParser struct{}
+
+func (j jsonCarParser) ParseCar(data []byte) {
+	fmt.Println("json car parsing...", string(data))
+}
+
+// yamlCarParser
+// tomlCarParser
+// iniCarParser
+
+// 电脑解析器
+type ComputerParser interface {
+	ParseComputer(data []byte)
+}
+
+type jsonComputerParser struct{}
+
+func (j jsonComputerParser) ParseComputer(data []byte) {
+	fmt.Println("json computer parsing...", string(data))
+}
+
+// yamlComputerParser
+// tomlComputerParser
+// iniComputerParser
+
+// 台灯解析器
+type LampParser interface {
+	ParseLamp(data []byte)
+}
+
+type jsonLampParser struct{}
+
+func (j jsonLampParser) ParseLamp(data []byte) {
+	fmt.Println("json lamp parsing...", string(data))
+}
+
+// yamlLampParser
+// tomlLampParser
+// iniLampParser

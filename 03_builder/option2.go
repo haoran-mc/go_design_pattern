@@ -8,6 +8,7 @@ import (
 )
 
 type Cluster struct {
+	// 把所有参数另用一个类存储
 	opts options
 }
 
@@ -18,27 +19,14 @@ type options struct {
 	logError          func(ctx context.Context, err error)
 }
 
-// Option 通过一个选项实现为一个函数指针来达到一个目的：设置选项中的数据的状态
-// Golang 函数指针的用法
+// 给闭包函数取一个名字
+// 闭包：能够捕获其他函数内部变量的函数
 type Option func(c *options)
 
-// LogError 设置某个参数的一个具体实现，用到了闭包的用法。
-// 不仅仅只是设置而采用闭包的目的是为了更为优化，更好用，对用户更友好
-func LogError(f func(ctx context.Context, err error)) Option {
-	return func(opts *options) {
-		opts.logError = f
-	}
-}
-
+// 将调用时的 d 捕获，然后在构造函数中使用
 func ConnectionTimeout(d time.Duration) Option {
 	return func(opts *options) {
 		opts.connectionTimeout = d
-	}
-}
-
-func WriteTimeout(d time.Duration) Option {
-	return func(opts *options) {
-		opts.writeTimeout = d
 	}
 }
 
@@ -48,23 +36,34 @@ func ReadTimeout(d time.Duration) Option {
 	}
 }
 
+func WriteTimeout(d time.Duration) Option {
+	return func(opts *options) {
+		opts.writeTimeout = d
+	}
+}
+
+func LogError(f func(ctx context.Context, err error)) Option {
+	return func(opts *options) {
+		opts.logError = f
+	}
+}
+
 // NewCluster 构造函数具体实现，传入相关Option，new一个对象并赋值
 // 如果参数很多，也不需要传入很多参数，只需要传入 opts ...Option 即可
 func NewCluster(opts ...Option) *Cluster {
-	clusterOpts := options{}
+	clusterOpts := options{} // 会进入所有闭包，一遍又一遍赋值
 	for _, opt := range opts {
-		// 函数指针的赋值调用
-		opt(&clusterOpts)
+		opt(&clusterOpts) // 函数指针的赋值调用
 	}
-
+	// 在这里处理依赖关系等复杂逻辑
+	// 此时 clusterOpts 已经是经过内部检验的 cluster 参数了
 	cluster := new(Cluster)
-	cluster.opts = clusterOpts
-
+	cluster.opts = clusterOpts // 经过检验的，放心赋值
 	return cluster
 }
 
 func main() {
-	// 前期储备，设定相关参数
+	// 储备可配置项
 	commonsOpts := []Option{
 		ConnectionTimeout(1 * time.Second),
 		ReadTimeout(2 * time.Second),
@@ -73,7 +72,7 @@ func main() {
 		}),
 	}
 
-	// 终极操作，构造函数
+	// 构造函数
 	cluster := NewCluster(commonsOpts...)
 
 	// 测试验证

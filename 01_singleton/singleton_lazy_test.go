@@ -1,8 +1,9 @@
 package singleton_test
 
 import (
-	singleton "github.com/haoran-mc/go_design_pattern/01_singleton"
 	"testing"
+
+	singleton "github.com/haoran-mc/go_design_pattern/01_singleton"
 )
 
 func TestGetLazyInstance(t *testing.T) {

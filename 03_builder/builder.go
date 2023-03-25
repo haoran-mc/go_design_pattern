@@ -8,7 +8,7 @@ const (
 	defaultMinIdle  = 1
 )
 
-// ResourcePoolConfig 资源池配置
+// 资源池配置类
 type ResourcePoolConfig struct {
 	name     string
 	maxTotal int
@@ -16,7 +16,7 @@ type ResourcePoolConfig struct {
 	minIdle  int
 }
 
-// ResourcePoolConfigBuilder 用于构建资源池配置类
+// 用于构建资源池的配置类
 type ResourcePoolConfigBuilder struct {
 	name     string
 	maxTotal int
@@ -24,7 +24,7 @@ type ResourcePoolConfigBuilder struct {
 	minIdle  int
 }
 
-// SetName 设置资源池配置类的组成部分，这里设置名称（name）
+// 设置资源池配置类的组成部分，这里设置名称（name）
 func (b *ResourcePoolConfigBuilder) SetName(name string) error {
 	if name == "" {
 		return fmt.Errorf("name can not be empty")

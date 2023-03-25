@@ -2,7 +2,7 @@ package singleton
 
 import "sync"
 
-// lazySingletonStruct 懒汉式单例
+// 懒汉式单例
 type lazySingletonStruct struct{}
 
 var (
@@ -10,7 +10,7 @@ var (
 	once          = &sync.Once{}
 )
 
-// GetLazySingletonInstance 获取单例实例
+// 获取单例实例
 func GetLazySingletonInstance() *lazySingletonStruct {
 	if lazySingleton == nil {
 		once.Do(func() {
@@ -20,7 +20,7 @@ func GetLazySingletonInstance() *lazySingletonStruct {
 	return lazySingleton
 }
 
-// GetLazyInstance 获取普通实例
+// 获取普通实例
 func GetLazyInstance() *lazySingletonStruct {
 	return &lazySingletonStruct{}
 }

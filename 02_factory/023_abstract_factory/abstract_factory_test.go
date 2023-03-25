@@ -5,41 +5,41 @@ import (
 	"testing"
 )
 
-func Test_jsonConfigParserFactory_CreateRuleParser(t *testing.T) {
+func Test_jsonConfigParserFactory_CreateCarParser(t *testing.T) {
 	tests := []struct {
 		name string
-		want RuleConfigParser
+		want CarParser
 	}{
 		{
 			name: "json",
-			want: jsonRuleConfigParser{},
+			want: jsonCarParser{},
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			j := jsonConfigParserFactory{}
-			if got := j.CreateRuleParser(); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("CreateRuleParser() = %v, want %v", got, tt.want)
+			j := jsonParserFactory{}
+			if got := j.CreateCarParser(); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("CreateCarParser() = %v, want %v", got, tt.want)
 			}
 		})
 	}
 }
 
-func Test_jsonConfigParserFactory_CreateSystemParser(t *testing.T) {
+func Test_jsonConfigParserFactory_CreateComputerParser(t *testing.T) {
 	tests := []struct {
 		name string
-		want SystemConfigParser
+		want ComputerParser
 	}{
 		{
 			name: "json",
-			want: jsonSystemConfigParser{},
+			want: jsonComputerParser{},
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			j := jsonConfigParserFactory{}
-			if got := j.CreateSystemParser(); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("CreateSystemParser() = %v, want %v", got, tt.want)
+			j := jsonParserFactory{}
+			if got := j.CreateComputerParser(); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("CreateComputerParser() = %v, want %v", got, tt.want)
 			}
 		})
 	}
