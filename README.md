@@ -5,9 +5,9 @@
 | 创建型   | [单例模式](./01_singleton)（Singleton Design Pattern） | ✅         |
 |          | [工厂模式](./02_factory)（Factory Design Pattern）     | ✅         |
 |          | [建造者模式](./03_builder)（Builder Design Pattern）   | ✅         |
-|          | 原型模式（Prototype Design Pattern）                   | ❌         |
-| 结构型   | 代理模式（Proxy Design Pattern）                       | ✅         |
-|          | 桥接模式（Bridge Design Pattern）                      | ✅         |
+|          | [原型模式](./04_prototype)（Prototype Design Pattern） | ❌         |
+| 结构型   | [代理模式](./05_proxy)（Proxy Design Pattern）         | ✅         |
+|          | [桥接模式](./06_bridge)（Bridge Design Pattern）       | ✅         |
 |          | 装饰器模式（Decorator Design Pattern）                 | ✅         |
 |          | 适配器模式（Adapter Design Pattern）                   | ✅         |
 |          | 门面模式（Facade Design Pattern）                      | ❌         |
@@ -24,3 +24,12 @@
 |          | 命令模式（Command Design Pattern）                     | ❌         |
 |          | 解释器模式（Interpreter Design Pattern）               | ❌         |
 |          | 中介模式（Mediator Design Pattern）                    | ❌         |
+
+
+# 参考：
+
+- [Graphic Design Patterns](https://design-patterns.readthedocs.io/zh_CN/latest/index.html)
+- [图说设计之美](https://time.geekbang.org/column/intro/100039001?tab=catalog)
+- [Go设计模式](https://lailin.xyz/post/go-design-pattern.html)
+- [All Design Patterns in Go (Golang)](https://golangbyexample.com/all-design-patterns-golang/)
+
