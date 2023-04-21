@@ -10,9 +10,9 @@
 |          | [桥接模式](./06_bridge)（Bridge Design Pattern）         | ✅         |
 |          | [装饰器模式](./07_decorator)（Decorator Design Pattern） | ✅         |
 |          | [适配器模式](./08_adapter)（Adapter Design Pattern）     | ✅         |
-|          | [门面模式](./09_facade)（Facade Design Pattern）                        | ❌         |
-|          | [组合模式](./10_composite)（Composite Design Pattern）                     | ❌         |
-|          | 享元模式（Flyweight Design Pattern）                     | ❌         |
+|          | [门面模式](./09_facade)（Facade Design Pattern）         | ❌         |
+|          | [组合模式](./10_composite)（Composite Design Pattern）   | ❌         |
+|          | [享元模式](./11_flyweight)（Flyweight Design Pattern）   | ❌         |
 | 行为型   | 观察者模式（Observer Design Pattern）                    | ✅         |
 |          | 模板模式（Template Method Design Pattern）               | ✅         |
 |          | 策略模式（Strategy Method Design Pattern）               | ✅         |
