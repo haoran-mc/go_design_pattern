@@ -15,7 +15,7 @@
 |          | [享元模式](./11_flyweight)（Flyweight Design Pattern）             | ❌         |
 | 行为型   | [观察者模式](./12_observer)（Observer Design Pattern）             | ✅         |
 |          | [模板模式](./13_template_method)（Template Method Design Pattern） | ✅         |
-|          | 策略模式（Strategy Method Design Pattern）                         | ✅         |
+|          | [策略模式](./14_strategy)（Strategy Method Design Pattern）        | ✅         |
 |          | 职责链模式（Chain Of Responsibility Design Pattern）               | ✅         |
 |          | 状态模式（State Design Pattern）                                   | ✅         |
 |          | 迭代器模式（Iterator Design Pattern）                              | ✅         |
