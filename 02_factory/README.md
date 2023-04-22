@@ -1,16 +1,16 @@
-# 需求样例
+# 1. 需求样例
 
 假设我们需要根据配置文件的文件名来解析一个配置文件，不同格式的文件使用不同的解析器解析。
 
 如：json 格式的文件使用 json 解析器；yaml 格式的文件使用 yaml 解析器...
 
-# 不使用工厂模式
+# 2. 不使用工厂模式
 
 [no_factory.go](./020_no_factory/no_factory.go)
 
 `Load` 函数是我们的加载函数，放入一个配置文件，系统就会找到并加载这个配置文件。
 
-# 简单工厂
+# 3. 简单工厂
 
 [simple_factory.go](./021_simple_factory/simple_factory.go)
 
@@ -20,7 +20,7 @@
 
 > 不是很难理解，就是把一个返回接口的地方封装起来。
 
-# 工厂方法
+# 4. 工厂方法
 
 [factory_method.go](./022_factory_method/factory_method.go)
 
@@ -31,19 +31,19 @@
 > 如果解析器的种类不多，且每种解析器的创建很简单，那就直接使用「简单工厂」就好了，
 > 反之使用工厂方法。
 
-# 抽象工厂
+# 5. 抽象工厂
 
 [abstract_factory.go](./023_abstract_factory/abstract_factory.go)
 
 不常用，假设这样一种场景，配置文件可能有不同的格式（json, yaml...），而且这个配置文件的服务类型也不一样（汽车的配置文件、电脑的配置文件、台灯的配置文件...）。
 
-## 比较工厂方法与抽象工厂
+## 5.1 比较工厂方法与抽象工厂
 
 在这种场景下，比较工厂方法 [factory_method.go](./023_abstract_factory/functory_method/factory_method.go) 与抽象工厂 [abstract_factory.go](./023_abstract_factory/abstract_factory.go)。
 
 > 好像差不多...
 
-## 自顶向下观察抽象工厂
+## 5.2 自顶向下观察抽象工厂
 
 1. 在 `Load` 函数中是怎样使用工厂的？
 
