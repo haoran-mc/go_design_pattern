@@ -18,7 +18,7 @@
 |          | [策略模式](./14_strategy)（Strategy Method Design Pattern）                          | ✅         |
 |          | [职责链模式](./15_chain_of_responsibility)（Chain Of Responsibility Design Pattern） | ✅         |
 |          | [状态模式](./16_state)（State Design Pattern）                                       | ✅         |
-|          | 迭代器模式（Iterator Design Pattern）                                                | ✅         |
+|          | [迭代器模式](./17_iterator)（Iterator Design Pattern）                               | ✅         |
 |          | 访问者模式（Visitor Design Pattern）                                                 | ❌         |
 |          | 备忘录模式（Memento Design Pattern）                                                 | ❌         |
 |          | 命令模式（Command Design Pattern）                                                   | ❌         |
