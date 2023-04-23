@@ -20,7 +20,7 @@
 |          | [状态模式](./16_state)（State Design Pattern）                                       | ✅         |
 |          | [迭代器模式](./17_iterator)（Iterator Design Pattern）                               | ✅         |
 |          | [访问者模式](./18_visitor)（Visitor Design Pattern）                                 | ❌         |
-|          | 备忘录模式（Memento Design Pattern）                                                 | ❌         |
+|          | [备忘录模式](./19_memento)（Memento Design Pattern）                                 | ❌         |
 |          | 命令模式（Command Design Pattern）                                                   | ❌         |
 |          | 解释器模式（Interpreter Design Pattern）                                             | ❌         |
 |          | 中介模式（Mediator Design Pattern）                                                  | ❌         |
