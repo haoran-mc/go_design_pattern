@@ -23,7 +23,7 @@
 |          | [备忘录模式](./19_memento)（Memento Design Pattern）                                 | ❌         |
 |          | [命令模式](./20_command)（Command Design Pattern）                                   | ❌         |
 |          | [解释器模式](./21_interpreter)（Interpreter Design Pattern）                         | ❌         |
-|          | 中介模式（Mediator Design Pattern）                                                  | ❌         |
+|          | [中介模式](./22_mediator)（Mediator Design Pattern）                                 | ❌         |
 |          | 空对象模式（Null Object Design Pattern）                                             | ❌         |
 
 # 代理、桥接、装饰、适配的区别
