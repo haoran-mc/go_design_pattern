@@ -1,3 +1,5 @@
+责任链模式
+
 It lets you create a chain of request handlers. For every incoming request, it is passed through the chain and each of the handler:
 
 1. Processes the request or skips the processing.

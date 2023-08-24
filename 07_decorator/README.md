@@ -1,3 +1,5 @@
+装饰器模式
+
 你有两种披萨：
 
 - 蔬菜披萨 Veggie Mania Pizza
