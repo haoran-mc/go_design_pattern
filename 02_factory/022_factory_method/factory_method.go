@@ -51,6 +51,11 @@ type ConfigParserFactory interface {
 type jsonConfigParserFactory struct{}
 
 func (J jsonConfigParserFactory) CreateParser() ConfigParser {
+	// 这里的解析器直接返回就可以
+	// 但有些解析器的获取很麻烦
+	// 这时候
+	// 工厂方法就有用了，
+	// 这里可以写很多的生成解析器的代码
 	return jsonConfigParser{}
 }
 
